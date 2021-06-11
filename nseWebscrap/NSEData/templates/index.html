@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Home | NSE</title>
+</head>
+
+<body>
+    <header class="navbar">
+        {% load static %}
+        <a href="/"><img src="{% static 'images/bull.png' %}" alt="Bull" class="logo"></a>
+        <a href="/"><img src="{% static 'images/logo.png' %}"" alt=" NSE" class="logo"></a>
+        <a href="/"><img src="{% static 'images/bear.png' %}"" alt=" Bear" class="logo"></a>
+    </header>
+    <div class="hero">
+
+
+
+        <table class="optionChainTable" class="common_table w-100">
+            <thead>
+                <tr class="Calls-Puts">
+                    <th class="text-center" colspan="10">CALLS</th>
+                    <th></th>
+                    <th class="text-center" colspan="10">PUTS</th>
+                </tr>
+                <tr class="column-names">
+                    <th title="Open Interest in contracts" width="5.14%">OI<span> </span></th>
+                    <th title="Change in Open Interest (Contracts)" width="4.34%">Chng in OI<span> </span></th>
+                    <th title="Volume in Contracts" width="5.54%">Volume<span> </span></th>
+                    <th title="Implied Volatility" width="3.34%">IV<span> </span></th>
+                    <th title="Last Traded Price" width="4.34%">LTP<span> </span></th>
+                    <th title="Change w.r.t to Previous Close" width="4.34%">Chng<span> </span></th>
+                    <th title="Best Bid/Buy Qty" width="4.34%">Bid Qty<span> </span></th>
+                    <th title="Best Bid/Buy Price" width="4.34%">Bid Price<span> </span></th>
+                    <th title="Best Ask/Sell Price" width="4.34%">Ask Price<span> </span></th>
+                    <th title="Best Ask/Sell Qty" width="4.34%">Ask Qty<span> </span></th>
+                    <th width="6.34%">Strike Price<span> </span></th>
+                    <th title="Best Bid/Buy Qty" width="4.34%">Bid Qty<span> </span></th>
+                    <th title="Best Bid/Buy Price" width="4.34%">Bid Price<span> </span></th>
+                    <th title="Best Ask/Sell Price" width="4.34%">Ask Price<span> </span></th>
+                    <th title="Best Ask/Sell Qty" width="4.34%">Ask Qty<span> </span></th>
+                    <th title="Change w.r.t to Previous Close" width="4.34%">Chng<span> </span></th>
+                    <th title="Last Traded Price" width="4.34%">LTP<span> </span></th>
+                    <th title="Implied Volatility" width="3.34%">IV<span> </span></th>
+                    <th title="Volume in Contracts" width="5.54%">Volume<span> </span></th>
+                    <th title="Change in Open Interest (Contracts)" width="4.34%">Chng in OI<span> </span></th>
+                    <th title="Open Interest in contracts" width="5.14%">OI<span> </span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for info in data %}
+                <tr>
+                    <td class="bg-yellow table-column" width="5.14%">{{ info.CE.openInterest }}</td>
+                    <td class="bg-yellow table-column" width="4.34%">{{ info.CE.changeinOpenInterest }}</td>
+                    <td class="bg-yellow table-column" width="5.54%">{{ info.CE.totalTradedVolume }}</td>
+                    <td class="bg-yellow table-column" width="3.34%">{{ info.CE.impliedVolatility }}</td>
+                    <td class="bg-yellow table-column" width="4.34%"><a class="bold"
+                            href="https://www.nseindia.com/get-quotes/derivatives?symbol=FINNIFTY&amp;identifier=OPTIDXFINNIFTY10-06-2021CE11700.00"
+                            target="_blank">{{ info.CE.lastPrice }}</a></td>
+                    <td class="bg-yellow table-column" width="4.34%">{{ info.CE.change|floatformat }}</td>
+                    <td class="bg-yellow table-column" width="4.34%">{{ info.CE.bidQty }}</td>
+                    <td class="bg-yellow table-column" width="4.34%">{{ info.CE.bidprice }}</td>
+                    <td class="bg-yellow table-column" width="4.34%">{{ info.CE.askPrice }}</td>
+                    <td class="bg-yellow table-column" width="4.34%">{{ info.CE.askQty }}</td>
+                    <td width="6.34%" class="table-column"><a class="bold">{{ info.CE.strikePrice }}</a></td>
+                    <td class="table-column" width="4.34%">{{ info.PE.bidQty }}</td>
+                    <td class="table-column" width="4.34%">{{ info.PE.bidprice }}</td>
+                    <td class="table-column" width="4.34%">{{ info.PE.askPrice }}</td>
+                    <td class="table-column" width="4.34%">{{ info.PE.askQty }}</td>
+                    <td class="table-column" width="4.34%">{{ info.PE.change|floatformat }}</td>
+                    <td class="table-column" width="4.34%"><a class="bold"
+                            href="https://www.nseindia.com/get-quotes/derivatives?symbol=FINNIFTY&amp;identifier=OPTIDXFINNIFTY10-06-2021PE11700.00"
+                            target="_blank">{{ info.PE.lastPrice }}</a></td>
+                    <td class="table-column" width="3.34%">{{ info.PE.impliedVolatility }}</td>
+                    <td class="table-column" width="5.54%">{{ info.PE.totalTradedVolume }}</td>
+                    <td class="table-column" width="4.34%">{{ info.PE.changeinOpenInterest }}</td>
+                    <td class="table-column" width="5.14%">{{ info.PE.openInterest }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- <script type="text/javascript" src="../static/js/script.js"></script> -->
+</body>
+
+</html>

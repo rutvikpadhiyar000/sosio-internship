@@ -1,27 +1,27 @@
 import requests
-import json
-import pandas as pd
 
-new_url = 'https://www.nseindia.com/api/option-chain-indices?symbol=BANKNIFTY'
+# Create your views here.
 
-headers = {'User-Agent': 'Mozilla/5.0'}
-page = requests.get(new_url,headers=headers)
-dajs = json.loads(page.text)
+class NSEIndia:
+        NSE_URL = 'https://www.nseindia.com/api/option-chain-indices?symbol='
+        def __init__(self):
+            self.headers = {'User-Agent': 'Mozilla/5.0'}
+            self.session = requests.Session()
+            self.session.get('http://nseindia.com', headers=self.headers).content
+        
+        def get_market_data(self, type_of_data):
+            data = self.session.get(f'{self.NSE_URL}{type_of_data}',
+                                headers=self.headers).json()['filtered']['data']
+                        
+            return data
 
+def home():
+    context = {}
+    nse = NSEIndia()
+    data = nse.get_market_data('NIFTY')
+    print(data[0]['CE'])
+    # context['CE'] = data['CE']
+    # context['PE'] = data['PE']
+    # return render('index.html', context)
 
-def fetch_oi(expiry_dt):
-    ce_values = [data['CE'] for data in dajs['records']['data'] if "CE" in data and data['expiryDate'] == expiry_dt]
-    pe_values = [data['PE'] for data in dajs['records']['data'] if "PE" in data and data['expiryDate'] == expiry_dt]
-
-    ce_dt = pd.DataFrame(ce_values).sort_values(['strikePrice'])
-    pe_dt = pd.DataFrame(pe_values).sort_values(['strikePrice'])
-    
-    print(ce_dt[['strikePrice','lastPrice']])
-
-def main():
-    
-    expiry_dt = '27-Aug-2020'
-    fetch_oi(expiry_dt)
-
-if __name__ == '__main__':
-    main()
+home()

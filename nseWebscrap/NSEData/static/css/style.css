@@ -1,0 +1,51 @@
+* {
+  font-family: sans-serif, serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling For Navigation Bar. */
+
+.navbar {
+  background-color: hsl(0, 0%, 75%);
+  display: flex;
+  padding: 15px;
+  overflow: hidden;
+}
+.navbar a{
+      margin: auto;
+}
+.navbar a .logo{
+  height: 60px;
+
+  color: black;
+  font-family: cursive;
+  font-weight: 550;
+  font-size: 170%;
+}
+
+/* Styling for hero */
+.hero {
+  margin-top: 30px;
+  width: auto;
+  height: auto;
+  overflow: auto;
+}
+
+/* Styling for table */
+.optionChainTable thead{
+  background-color: hsl(194, 57%, 60%);
+}
+.bold {
+  font-weight: bold;
+}
+.bg-yellow {
+  background-color: yellow;
+}
+.table-column {
+  border: solid 1px #e3e3e3;
+  padding: 1px 1px;
+  font-size: 0.7rem;
+  text-align: center;
+  color: #333;
+}
