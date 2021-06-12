@@ -4,6 +4,7 @@ from .models import mainData, NSEInfo, NSEInfoGrouped
 from django.utils import timezone
 import time
 import threading
+from json.decoder import JSONDecodeError
 
 # Create your views here.
 
@@ -42,18 +43,14 @@ def home(request):
 def refresh_database():
     while True:
         try:
+            # it gives error when api is updating
             get_market_data()
-        except:
-            # if there is error try after
-            # some time (it gives error when 
-            # api is updating) 
+            time.sleep(180)
+        except JSONDecodeError:
+            # if there is error try after 3 seconds 
             time.sleep(3)
-            refresh_database()
-        time.sleep(180)
 
-def get_market_data(type_of_data = None):
-    if type_of_data is None:
-        type_of_data = "NIFTY"
+def get_market_data(type_of_data = "NIFTY"):
     NSE_URL = 'https://www.nseindia.com/api/option-chain-indices?symbol='
     headers = {'User-Agent': 'Mozilla/5.0'}
     session = requests.Session()
