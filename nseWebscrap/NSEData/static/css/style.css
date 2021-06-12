@@ -49,3 +49,59 @@
   text-align: center;
   color: #333;
 }
+
+/* For email subscription form */
+
+.subscribe {
+  height: 500px;
+  width: 600px;
+  background-color: hsl(0, 0%, 75%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+  text-align: center;
+}
+.subscribe h1{
+  padding: 10px 0;
+  font-family: cursive;
+  font-size: 3em;
+}
+.subscribe form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.subscribe form input {
+  width: 500px;
+  border-style: solid;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+    height: 45px;
+  font-size: 20px;
+  border-width: 3px;
+  border-radius: 20px;
+  border-color: black;
+  text-align: center;
+  z-index: -1;
+  margin: 1em;
+}
+.subscribe form button {
+  width: 120px;
+  height: 40px;
+  border-color: black;
+  border-style: solid;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 15px;
+  border-width: 3px;
+  transition: 0.5s;
+}
+.subscribe form button:hover {
+  color: white;
+  background-color: hsl(0, 0%, 50%);
+}

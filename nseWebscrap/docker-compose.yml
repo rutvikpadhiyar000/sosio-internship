@@ -1,8 +1,10 @@
 version: "3.9"
    
 services:
-   web:
+  web:
     build: .
+    command: python manage.py makemigrations
+    command: python manage.py migrate
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code

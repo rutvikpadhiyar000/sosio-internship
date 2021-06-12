@@ -127,3 +127,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CELERY stuff
 CELERY_BROKER_URL = 'redis://localhost:6379'
+
+# Mail setup
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "rutvikdjangotesting@gmail.com"
+EMAIL_HOST_PASSWORD = "djangotesting"

@@ -37,3 +37,8 @@ class NSEInfoGrouped(models.Model):
 
     NSEInfo_start = models.IntegerField()
     NSEInfo_end = models.IntegerField()
+
+# Saves all subscribers
+class mailList(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, primary_key=True)
