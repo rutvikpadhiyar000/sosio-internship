@@ -38,7 +38,8 @@ def home(request):
     context['data'] = all_data
     return render(request, 'index.html', context)
 
-# These runs on saparate thred and refresh database every 3 minuts.
+"""These runs on saparate thred and refresh
+    database every 3 minuts."""
 
 def refresh_database():
     while True:
