@@ -34,13 +34,13 @@ def home(request):
         # finishes executing (only happens for first request)
         time.sleep(15)
 
-    total_home_page_load+=1
 
     # uses database objects so may give error for empty database.
     context = {}
     row_group_data = NSEInfoGrouped.objects.last()
     all_data = get_rows_from_rowGroup(row_group_data)
     context['data'] = all_data
+    total_home_page_load+=1
     return render(request, 'index.html', context)
 
 
