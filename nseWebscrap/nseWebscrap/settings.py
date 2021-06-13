@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from .local_settings import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,5 +134,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = # Add mail address here.
-EMAIL_HOST_PASSWORD = # Add password for mail
+
+# Should have saparate but including
+# here for demonstration perpose.
+EMAIL_HOST_USER = LOCAL_EMAIL_HOST_USER # Sender mail address
+EMAIL_HOST_PASSWORD = LOCAL_EMAIL_HOST_PASSWORD #sender password
